@@ -12,41 +12,6 @@
 })();
 
 (function(){
-  var btn=document.getElementById('lang-btn'),panel=document.getElementById('lang-panel'),q=document.getElementById('lang-search'),list=document.getElementById('lang-list'),label=document.getElementById('lang-label');
-  if(!btn||!panel)return;
-  function cur(){var m=document.cookie.match(/(?:^|;\s*)googtrans=\/[^\/]*\/([^;]+)/);return m?decodeURIComponent(m[1]):'en';}
-  var c=cur(),b=list.querySelector('button[data-code="'+c+'"]');
-  if(b){label.textContent=b.querySelector('span').textContent;b.setAttribute('aria-current','true');}
-  function open(o){panel.hidden=!o;btn.setAttribute('aria-expanded',o);if(o){panel.style.right='';q.value='';filter('');
-    var r=panel.getBoundingClientRect();if(getComputedStyle(panel).position!=='fixed'&&r.left<16){panel.style.right=(r.left-16)+'px';}
-    setTimeout(function(){q.focus();},30);}}
-  btn.addEventListener('click',function(e){e.stopPropagation();open(panel.hidden);});
-  panel.addEventListener('click',function(e){e.stopPropagation();});
-  document.addEventListener('click',function(){open(false);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')open(false);});
-  function filter(v){v=v.trim().toLowerCase();list.querySelectorAll('li').forEach(function(li){li.hidden=v&&li.firstChild.getAttribute('data-s').indexOf(v)<0;});}
-  q.addEventListener('input',function(){filter(q.value);});
-  function setCookie(val,exp){
-    var parts=location.hostname.split('.'),doms=[''];
-    if(parts.length>1)doms.push('; domain=.'+parts.slice(-2).join('.'));
-    doms.forEach(function(d){document.cookie='googtrans='+val+'; path=/'+d+(exp?'; expires=Thu, 01 Jan 1970 00:00:00 GMT':'');});
-  }
-  list.addEventListener('click',function(e){
-    var t=e.target.closest('button[data-code]');if(!t)return;
-    var code=t.getAttribute('data-code');
-    var live=/(^|\.)dixkox\.com$/.test(location.hostname)&&window.google&&google.translate&&google.translate.TranslateElement;
-    if(!live){
-      if(code==='en'){open(false);return;}
-      var page=location.pathname.split('/').pop();if(!/\.html$/.test(page)||page==='index.html')page='';
-      var url='https://dixkox-com.translate.goog/'+page+'?_x_tr_sl=en&_x_tr_tl='+encodeURIComponent(code)+'&_x_tr_hl='+encodeURIComponent(code);
-      var w=window.open(url,'_blank','noopener');if(!w)location.href=url;open(false);return;
-    }
-    if(code==='en'){setCookie('',true);}else{setCookie('/en/'+code,false);}
-    location.reload();
-  });
-})();
-
-(function(){
   var f=document.getElementById('social-float'),t=document.getElementById('sf-toggle');
   if(!f||!t)return;
   t.addEventListener('click',function(e){e.stopPropagation();var o=f.classList.toggle('open');t.setAttribute('aria-expanded',o);});
