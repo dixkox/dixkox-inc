@@ -1,14 +1,23 @@
 # DIXKOX Inc. website
 
-Single file site: `index.html` (no build step).
+Live site: **https://dixkox.com**
+Repository: https://github.com/dixkox/dixkox-inc
 
-## Publish on GitHub Pages
-1. On GitHub (account `dixkox`) create a new public repository named `dixkox-inc`.
-2. Add file > Upload files: upload `index.html` and `.nojekyll`, then Commit.
-3. Settings > Pages > Deploy from a branch > `main` / root > Save.
+A static multi-page site (no build step): 17 HTML pages plus `styles.css`, `script.js`, images, `sitemap.xml` and `robots.txt`.
 
-## Use dixkox.com
-Do this at the place where dixkox.com is registered (DNS page). **Do not delete the existing Zoho MX, SPF (TXT) or DKIM records**, or info@dixkox.com stops receiving mail.
-- Add four A records for host `@`: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
-- Add a CNAME for host `www` pointing to `dixkox.github.io`
-- In GitHub: Settings > Pages > Custom domain = `dixkox.com`, then tick Enforce HTTPS once it is available.
+## Files that must always stay
+- `CNAME` contains `dixkox.com` and connects the domain. Do not delete or edit it.
+- `.nojekyll` tells GitHub to publish the files exactly as they are.
+
+## How to update the site
+1. Unzip the new website zip on your computer.
+2. Open https://github.com/dixkox/dixkox-inc/upload/main
+3. Select all files in the unzipped folder (Ctrl+A), drag them in, click **Commit changes**. Upload once only; files with the same name are replaced automatically.
+4. Wait for the green tick in the **Actions** tab, then open https://dixkox.com in a private window.
+
+## GitHub Pages and DNS (already set up)
+- Settings > Pages: Deploy from a branch, `main`, `/ (root)`. Custom domain `dixkox.com`, Enforce HTTPS ticked.
+- DNS at GoDaddy: four A records for `@` (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) and a CNAME for `www` to `dixkox.github.io`. Keep the Zoho MX, SPF and DKIM records so info@dixkox.com keeps receiving mail.
+
+## Language switcher
+The globe button in the top bar translates every page with Google Translate. It works on the live site only.
